@@ -13,7 +13,7 @@
   "branchPrefix": "renovate-",
 
   "timezone": "Europe/Oslo",
-  "schedule": ["before 7am every weekday"],
+  "schedule": ["* 0-6 * * 1-5"],
 
   "prHourlyLimit": 2,
   "prConcurrentLimit": 10,
@@ -30,13 +30,12 @@
 
   "npmrc": "@vy:registry=https://nexus.common-services.vydev.io/repository/npm-group/",
 
-  "maven": {
-    "registryUrls": [
-      "https://nexus.common-services.vydev.io/repository/maven-public/"
-    ]
-  },
-
   "packageRules": [
+    {
+      "description": "Maven registry",
+      "matchDatasources": ["maven"],
+      "registryUrls": ["https://nexus.common-services.vydev.io/repository/maven-public/"]
+    },
     {
       "description": "Group patch updates together",
       "matchUpdateTypes": ["patch"],
@@ -69,7 +68,7 @@
   ],
 
   "vulnerabilityAlerts": {
-    "enabled": true,
+    "labels": ["security"],
     "minimumReleaseAge": "0 days"
   }
 }
