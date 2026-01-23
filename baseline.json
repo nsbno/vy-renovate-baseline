@@ -8,6 +8,16 @@
     ":semanticCommits"
   ],
 
+  "dependencyDashboard": true,
+
+  "branchPrefix": "renovate-",
+
+  "timezone": "Europe/Oslo",
+  "schedule": ["before 7am every weekday"],
+
+  "prHourlyLimit": 2,
+  "prConcurrentLimit": 10,
+
   "minimumReleaseAge": "3 days",
 
   "hostRules": [
