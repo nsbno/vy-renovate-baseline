@@ -1,0 +1,65 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Vy baseline Renovate configuration",
+  "extends": [
+    "config:recommended",
+    "group:recommended",
+    ":separateMajorReleases",
+    ":semanticCommits"
+  ],
+
+  "minimumReleaseAge": "3 days",
+
+  "hostRules": [
+    {
+      "matchHost": "nexus.common-services.vydev.io",
+      "username": "github-actions-read",
+      "password": "{{env.NEXUS_GHA_READ_USER}}"
+    }
+  ],
+
+  "npmrc": "@vy:registry=https://nexus.common-services.vydev.io/repository/npm-group/",
+
+  "maven": {
+    "registryUrls": [
+      "https://nexus.common-services.vydev.io/repository/maven-public/"
+    ]
+  },
+
+  "packageRules": [
+    {
+      "description": "Group patch updates together",
+      "matchUpdateTypes": ["patch"],
+      "groupName": "patch updates",
+      "groupSlug": "patch",
+      "automerge": true
+    },
+    {
+      "description": "GitHub Actions",
+      "matchManagers": ["github-actions"],
+      "groupName": "github-actions",
+      "automerge": false
+    },
+    {
+      "description": "Docker digests",
+      "matchManagers": ["docker-compose", "dockerfile"],
+      "matchUpdateTypes": ["digest"],
+      "automerge": false
+    },
+    {
+      "description": "Terraform providers",
+      "matchManagers": ["terraform"],
+      "groupName": "terraform"
+    },
+    {
+      "description": "Go modules",
+      "matchManagers": ["gomod"],
+      "groupName": "go-modules"
+    }
+  ],
+
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "minimumReleaseAge": "0 days"
+  }
+}
