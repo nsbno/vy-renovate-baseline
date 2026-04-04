@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Vy baseline Renovate configuration",
+  "description": "Vy's default Renovate configuration. Use this as your baseline",
   "extends": [
     "config:recommended",
     "group:recommended",
@@ -67,6 +67,88 @@
       "description": "Go modules",
       "matchManagers": ["gomod"],
       "groupName": "go-modules"
+    },
+
+    // Frontend grouping rules
+    // (React, Jest, Babel, ESLint, webpack, Next.js, Angular, Vue, Vite,
+    //  testing-library, Storybook, PostCSS, etc. are already handled by
+    //  group:recommended and group:monorepos)
+    {
+      "description": "Tailwind CSS ecosystem",
+      "matchPackagePatterns": ["^tailwindcss", "^@tailwindcss/"],
+      "groupName": "tailwindcss"
+    },
+    {
+      "description": "Sass/SCSS packages",
+      "matchPackageNames": ["sass", "sass-loader", "sass-embedded"],
+      "groupName": "sass"
+    },
+    {
+      "description": "styled-components ecosystem",
+      "matchPackagePatterns": ["^styled-components", "^@types/styled-components"],
+      "groupName": "styled-components"
+    },
+    {
+      "description": "Emotion CSS-in-JS",
+      "matchPackagePatterns": ["^@emotion/"],
+      "groupName": "emotion"
+    },
+    {
+      "description": "esbuild ecosystem",
+      "matchPackagePatterns": ["^esbuild", "^@esbuild/"],
+      "groupName": "esbuild"
+    },
+
+    // Python grouping rules
+    // (Pulumi Python packages are already handled by group:recommended)
+    {
+      "description": "pytest ecosystem",
+      "matchPackagePatterns": ["^pytest"],
+      "matchDatasources": ["pypi"],
+      "groupName": "pytest"
+    },
+    {
+      "description": "Python linting and formatting tools",
+      "matchPackageNames": ["ruff", "black", "isort", "flake8", "pylint", "autopep8", "pycodestyle", "pyflakes", "bandit"],
+      "matchDatasources": ["pypi"],
+      "groupName": "python-linters"
+    },
+    {
+      "description": "Python type checking",
+      "matchPackageNames": ["mypy", "pyright", "types-requests", "types-setuptools"],
+      "matchPackagePatterns": ["^types-", "^mypy-"],
+      "matchDatasources": ["pypi"],
+      "groupName": "python-type-checking"
+    },
+    {
+      "description": "AWS SDK for Python",
+      "matchPackageNames": ["boto3", "botocore", "s3transfer", "awscli"],
+      "matchDatasources": ["pypi"],
+      "groupName": "aws-python-sdk"
+    },
+    {
+      "description": "FastAPI ecosystem",
+      "matchPackageNames": ["fastapi", "uvicorn", "starlette", "httpx"],
+      "matchDatasources": ["pypi"],
+      "groupName": "fastapi"
+    },
+    {
+      "description": "Django ecosystem",
+      "matchPackagePatterns": ["^django", "^Django"],
+      "matchDatasources": ["pypi"],
+      "groupName": "django"
+    },
+    {
+      "description": "Flask ecosystem",
+      "matchPackagePatterns": ["^flask", "^Flask"],
+      "matchDatasources": ["pypi"],
+      "groupName": "flask"
+    },
+    {
+      "description": "Pydantic ecosystem",
+      "matchPackagePatterns": ["^pydantic"],
+      "matchDatasources": ["pypi"],
+      "groupName": "pydantic"
     }
   ],
 
