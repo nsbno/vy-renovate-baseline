@@ -1,0 +1,15 @@
+{
+  "name": "renovate-vy-baseline",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.27.0",
+  "devDependencies": {
+    "ajv-cli": "^5.0.0"
+  }
+}

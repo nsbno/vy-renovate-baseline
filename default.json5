@@ -18,7 +18,9 @@
   "prHourlyLimit": 2,
   "prConcurrentLimit": 10,
 
-  "$comment": "I ",
+  // Leave at 7 days of baking time before including an update,
+  // that should allow most supply chain attacks to be discovered
+  // and resolved. We do 14 days to be extra careful
   "minimumReleaseAge": "14 days",
 
   "hostRules": [
