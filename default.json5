@@ -44,13 +44,20 @@
       "matchUpdateTypes": ["patch"],
       "groupName": "patch updates",
       "groupSlug": "patch",
+      // Trying to find a balance between being careful about automerging,
+      // whilst ensuring that patches are regularly merged,
+      // as it lets developers focus on other things, and we get security patches
+      // merged reasonably quickly
       "automerge": true
     },
     {
-      "description": "GitHub Actions",
+      "description": "GitHub Actions - pinned to commit digest",
       "matchManagers": ["github-actions"],
       "groupName": "github-actions",
-      "automerge": false
+      "automerge": false,
+      // Make sure that we pin a version to its commit hash and not version,
+      // as the latter is more vulnerable to supply-chain attacks
+      "pinDigests": true
     },
     {
       "description": "Docker digests",
@@ -97,6 +104,20 @@
       "description": "esbuild ecosystem",
       "matchPackagePatterns": ["^esbuild", "^@esbuild/"],
       "groupName": "esbuild"
+    },
+
+    // JVM grouping rules
+    {
+      "description": "Kotlin ecosystem",
+      "matchPackagePatterns": ["^org.jetbrains.kotlin:", "^org.jetbrains.kotlinx:"],
+      "matchDatasources": ["maven"],
+      "groupName": "kotlin"
+    },
+    {
+      "description": "Micronaut ecosystem",
+      "matchPackagePatterns": ["^io.micronaut"],
+      "matchDatasources": ["maven"],
+      "groupName": "micronaut"
     },
 
     // Python grouping rules
