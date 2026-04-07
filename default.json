@@ -47,7 +47,9 @@
       // Trying to find a balance between being careful about automerging,
       // whilst ensuring that patches are regularly merged,
       // as it lets developers focus on other things, and we get security patches
-      // merged reasonably quickly
+      // merged reasonably quickly.
+      //
+      // If this becomes a hasle we can consider setting automerge to false
       "automerge": true
     },
     {
@@ -56,8 +58,23 @@
       "groupName": "github-actions",
       "automerge": false,
       // Make sure that we pin a version to its commit hash and not version,
-      // as the latter is more vulnerable to supply-chain attacks
+      // as the latter is more vulnerable to supply-chain attacks.
+      // We're not fully immune against it with pinning, but it helps greatly.
       "pinDigests": true
+    },
+    {
+      "description": "nsbno/platform-actions - ignore completely, keep using @v2 major ref",
+      "matchManagers": ["github-actions"],
+      "matchPackagePatterns": ["^nsbno/platform-actions"],
+      // For our own platform-actions we don't want Renovate to manage versions.
+      // Teams should reference the major tag, i.e. @v2, so that Utviklerplattform can apply fixes
+      // efficiently without requiring every project to manually upgrade the pipeline
+      // whenever a new version is released.
+      //
+      // This has of course some tradeoff in security. But I'd argue the benefits are worth it
+      // as it can also improve our security posture. For example by allowing Utviklerplatform
+      // to centrally patch vulnerabilities in Github actions, and it will immediately affect all projects
+      "enabled": false
     },
     {
       "description": "Docker digests",
